@@ -3,13 +3,15 @@
   onChange=(route-action 'change')
 }}
   {{#grid-stack-item
-     options=(hash x=0 y=0 width=6 height=2)
+     options=(hash x=0 y=0 width=6 height=2 noMove=false)
   }}
-    Widget #1
+    {{#list-grid-item}}
+    {{/list-grid-item}}
   {{/grid-stack-item}}
   {{#grid-stack-item
      options=(hash x=6 y=0 width=6 height=2)
   }}
-    Widget #2
+    {{#map-grid-item}}
+    {{/map-grid-item}}
   {{/grid-stack-item}}
 {{/grid-stack}}
