@@ -1,17 +1,23 @@
-{{#grid-stack
-  options=(hash animate=true)
+{{#grid-stack-resizable
+  options=(hash animate=true cellHeight=110px width=10 float=true disableOneColumnMode=true)
   onChange=(route-action 'change')
 }}
   {{#grid-stack-item
-     options=(hash x=0 y=0 width=6 height=2 noMove=false)
+     options=(hash x=1 y=0 width=1 height=1)
   }}
     {{#list-grid-item}}
     {{/list-grid-item}}
   {{/grid-stack-item}}
   {{#grid-stack-item
-     options=(hash x=6 y=0 width=6 height=2)
+     options=(hash x=2 y=0 width=2 height=2)
   }}
     {{#map-grid-item}}
     {{/map-grid-item}}
   {{/grid-stack-item}}
-{{/grid-stack}}
+  {{#grid-stack-item
+     options=(hash x=0 y=3 width=1 height=1)
+  }}
+    {{#list-grid-item}}
+    {{/list-grid-item}}
+  {{/grid-stack-item}}
+{{/grid-stack-resizable}}
