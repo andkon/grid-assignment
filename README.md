@@ -1,16 +1,16 @@
 # grid-assignment
 
-This is my coding assignment for Isle of Code. It's the first thing I built in ember, and I learned a whole lot along the way.
+This is my coding assignment for Isle of Code. It's the first thing I built in ember, and I learned a whole lot along the way. Below is the full workup and explanation, and [here's the screencast version](https://www.youtube.com/watch?v=oQs3Mp78JEw&feature=youtu.be).
 
 ## Working with `gridstack.js`
 
-I chose `gridstack.js` — implemented as the `ember-gridstack` addon — for a couple reasons. Most importantly, this is meant to be a fast prototype that can be delivered to a client quickly. If you're emphasizing speed, I think it's better to begin by working with a well-maintained library that meets your current well-defined needs than to commit to an unexplored, unscoped custom implementation that might accommodate future but still unknown requirements. `gridstack` definitely fits the bill: it's actively maintained, its demo apps seem to show working implementations for all specified requirements, and it even seems to have API features that could be used to accommodate edge cases around window resizing (see more on those below). Even if it turns out to be inadequate, to begin with it puts productivity and identified client needs first, rather than a ton of labour that may not even turn into project that pays. That work won't be wasted — it'll inform the development of whatever might be necessary.
+I chose [`gridstack.js`](https://github.com/gridstack/gridstack.js) — implemented as the `ember-gridstack` addon — for a couple reasons. Most importantly, this is meant to be a fast prototype that can be delivered to a client quickly. If you're emphasizing speed, I think it's better to begin by working with a well-maintained library that meets your current well-defined needs than to commit to an unexplored, unscoped custom implementation that might accommodate future but still unknown requirements. `gridstack` definitely fits the bill: it's actively maintained, its demo apps seem to show working implementations for all specified requirements, and it even seems to have API features that could be used to accommodate edge cases around window resizing (see more on those below). Even if it turns out to be inadequate, to begin with it puts productivity and identified client needs first, rather than a ton of labour that may not even turn into project that pays. That work won't be wasted — it'll inform the development of whatever might be necessary.
 
 `gridstack` also has support for touch devices and touch events, in case Isle's customer ends up wanting a mobile version of their Ember app.
 
 ## How it works
 
-`ember-gridstack` has a `grid-stack` component that manages rows and columns of `grid-stack-item`s. Instead of subclassing `grid-stack-item` to create different content-specific items (which ended up resulting in super strange behaviour), I've inserted content-specific components inside them — such as `list-grid-item` and `map-grid-item`. Their css is defined in `app.js`.
+`ember-gridstack` has a `grid-stack` component that manages rows and columns of `grid-stack-item`s. Instead of subclassing `grid-stack-item` to create different content-specific items (which ended up resulting in super strange behaviour), I've inserted content-specific components inside them — such as `list-grid-item` and `map-grid-item`. Their css is defined in `app.js`, and the template is all set up in `app/templates/index.hbs`.
 
 I also subclassed `grid-stack` as `grid-stack-resizable`, and used the `ember-resize` addon to get it to watch for window viewport changes. When the width changes, we use `gridStack.setGridWidth()` to set the new number of columns. `grid-stack-resizable` also uses the `didInsertElement` event for the opportunity to decide how many columns to begin with initially.
 
