@@ -2,22 +2,17 @@
   options=(hash animate=true cellHeight=110px width=10 float=true disableOneColumnMode=true minWidth=0)
   onChange=(route-action 'change')
 }}
+{{#each model as |item|}}
   {{#grid-stack-item
-     options=(hash x=1 y=0 width=1 height=1)
+     options=(hash x=item.x y=item.y width=item.width height=item.height)
   }}
+  {{#if item.isList}}
     {{#list-grid-item}}
     {{/list-grid-item}}
-  {{/grid-stack-item}}
-  {{#grid-stack-item
-     options=(hash x=2 y=0 width=2 height=2)
-  }}
+  {{else if item.isMap}}
     {{#map-grid-item}}
     {{/map-grid-item}}
+  {{/if}}
   {{/grid-stack-item}}
-  {{#grid-stack-item
-     options=(hash x=0 y=3 width=1 height=1)
-  }}
-    {{#list-grid-item}}
-    {{/list-grid-item}}
-  {{/grid-stack-item}}
+{{/each}}
 {{/grid-stack-resizable}}
